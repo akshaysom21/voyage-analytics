@@ -1,0 +1,11 @@
+﻿pandas
+numpy
+scikit-learn
+flask
+flask-restful
+mlflow
+streamlit
+joblib
+scipy
+matplotlib
+seaborn
