@@ -1,11 +1,6 @@
-﻿pandas
-numpy
-scikit-learn
-flask
-flask-restful
-mlflow
-streamlit
+pandas 
+numpy 
+scikit-learn 
+mlflow 
+dagshub 
 joblib
-scipy
-matplotlib
-seaborn

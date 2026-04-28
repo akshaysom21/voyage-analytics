@@ -1,0 +1,11 @@
+Best Classification Model: RandomForestClassifier
+
+              precision    recall  f1-score   support
+
+    economic       0.45      0.46      0.45     15493
+  firstClass       0.63      0.63      0.63     23284
+     premium       0.45      0.45      0.45     15601
+
+    accuracy                           0.53     54378
+   macro avg       0.51      0.51      0.51     54378
+weighted avg       0.53      0.53      0.53     54378
