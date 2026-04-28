@@ -205,3 +205,33 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+notepad .gitignore
+
+# Virtual Environment (NEVER commit this)
+voyage_env/
+venv/
+env/
+.venv/
+
+# Model artifacts (large binary files)
+*.pkl
+*.joblib
+*.h5
+*.pt
+
+# Data files (large)
+data/*.csv
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+**/.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# OS files
+.DS_Store
+Thumbs.db
