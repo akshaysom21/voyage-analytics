@@ -235,3 +235,9 @@ __pycache__/
 # OS files
 .DS_Store
 Thumbs.db
+
+
+models/plots/
+.ipynb_checkpoints/
+__pycache__/
+.vscode/
