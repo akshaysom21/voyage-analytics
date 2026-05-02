@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+venv/
+voyage_env/
+notebooks/
+data/
+*.csv
+.git/
+mlflow_tracking/
+kubernetes/
+*.log
+.DS_Store
