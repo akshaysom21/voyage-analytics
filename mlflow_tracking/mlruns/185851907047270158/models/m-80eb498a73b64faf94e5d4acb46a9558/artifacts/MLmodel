@@ -1,0 +1,23 @@
+artifact_path: file:///workspaces/voyage-analytics/mlflow_tracking/mlruns/185851907047270158/models/m-80eb498a73b64faf94e5d4acb46a9558/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.12.1
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+mlflow_version: 3.11.1
+model_id: m-80eb498a73b64faf94e5d4acb46a9558
+model_size_bytes: 267388634
+model_uuid: m-80eb498a73b64faf94e5d4acb46a9558
+prompts: null
+run_id: 61c090deed564c269ac5c4fd3b47fcb1
+utc_time_created: '2026-05-02 10:25:28.046809'

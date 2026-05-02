@@ -1,0 +1,8 @@
+artifact_location: file:///workspaces/voyage-analytics/mlflow_tracking/mlruns/185851907047270158
+creation_time: 1777717477016
+experiment_id: '185851907047270158'
+last_update_time: 1777717477016
+lifecycle_stage: active
+name: Flight-Price-Regression
+trace_location: null
+workspace: default

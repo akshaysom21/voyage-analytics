@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/voyage-analytics/mlflow_tracking/mlruns/138945122728525596/be3728923919480895cda7640559202f/artifacts
+end_time: 1777717585937
+entry_point_name: ''
+experiment_id: '138945122728525596'
+lifecycle_stage: active
+run_id: be3728923919480895cda7640559202f
+run_name: LogisticRegression_tuned
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777717578506
+status: 3
+tags: []
+user_id: codespace

@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/voyage-analytics/mlflow_tracking/mlruns/185851907047270158/1404c1cc9cfd458797c123a2a770716d/artifacts
+end_time: 1777717502143
+entry_point_name: ''
+experiment_id: '185851907047270158'
+lifecycle_stage: active
+run_id: 1404c1cc9cfd458797c123a2a770716d
+run_name: RandomForest_100
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777717479057
+status: 3
+tags: []
+user_id: codespace

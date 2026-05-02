@@ -1,0 +1,8 @@
+artifact_location: file:///workspaces/voyage-analytics/mlflow_tracking/mlruns/138945122728525596
+creation_time: 1777717573071
+experiment_id: '138945122728525596'
+last_update_time: 1777717573071
+lifecycle_stage: active
+name: Gender-Classification
+trace_location: null
+workspace: default

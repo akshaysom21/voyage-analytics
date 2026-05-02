@@ -1,0 +1,14 @@
+artifact_uri: file:///workspaces/voyage-analytics/mlflow_tracking/mlruns/138945122728525596/263aaf00ab284fc4b5c888bb3e3ce9ab/artifacts
+end_time: 1777717595523
+entry_point_name: ''
+experiment_id: '138945122728525596'
+lifecycle_stage: active
+run_id: 263aaf00ab284fc4b5c888bb3e3ce9ab
+run_name: GradientBoosting_clf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1777717590535
+status: 3
+tags: []
+user_id: codespace

@@ -1,0 +1,10 @@
+artifact_location: file:///workspaces/voyage-analytics/mlflow_tracking/mlruns/138945122728525596/models/m-52371dffdd4f46a79482da5ee2d4b42c/artifacts
+creation_timestamp: 1777717578692
+experiment_id: '138945122728525596'
+last_updated_timestamp: 1777717585935
+model_id: m-52371dffdd4f46a79482da5ee2d4b42c
+model_type: null
+name: model
+source_run_id: be3728923919480895cda7640559202f
+status: 2
+status_message: null
