@@ -5,6 +5,7 @@
 
 from flask import Flask, request, jsonify
 from predict import predict_price
+from predict_gender import predict_gender
 import datetime
 
 # Initialize App 
@@ -25,7 +26,8 @@ def home():
             'GET /health' : 'Health check',
             'GET /model/info' : 'Model metadata',
             'POST /predict' : 'Single flight price prediction',
-            'POST /predict/batch' : 'Batch flight price predictions'
+            'POST /predict/batch' : 'Batch flight price predictions',
+            'POST /predict/gender' : 'Predict user gender from travel behaviour'
         }
     }), 200
 
@@ -163,6 +165,59 @@ def predict_batch():
             'avg_price': round(sum(prices) / len(prices), 2) if prices else None
         }
     }), 200
+
+
+# Gender Prediction
+@app.route('/predict/gender', methods=['POST'])
+def predict_gender_route():
+    """
+    Predict user gender from travel behaviour.
+
+    Request Body (JSON):
+    {
+        "age" : 25,
+        "company" : "4You",
+        "total_flights" : 50,
+        "avg_flight_price" : 900.0,
+        "max_flight_price" : 1500.0,
+        "min_flight_price" : 300.0,
+        "std_flight_price" : 200.0,
+        "avg_distance" : 500.0,
+        "firstClass_count" : 20,
+        "premium_count" : 15,
+        "economic_count" : 15,
+        "rainbow_count" : 20,
+        "cloudfy_count" : 20,
+        "flyingdrops_count" : 10,
+        "peak_month_bookings" : 5,
+        "firstClass_ratio" : 0.4,
+        "premium_ratio" : 0.3,
+        "economic_ratio" : 0.3,
+        "total_hotel_bookings" : 10,
+        "avg_hotel_price" : 200.0,
+        "avg_stay_days" : 2.5,
+        "avg_total_spend" : 500.0,
+        "max_total_spend" : 1000.0
+    }
+    """
+    if not request.is_json:
+        return jsonify({
+            'success' : False,
+            'error' : 'Content-Type must be application/json'
+        }), 400
+
+    data = request.get_json()
+
+    if not data:
+        return jsonify({
+            'success' : False,
+            'error' : 'Request body is empty'
+        }), 400
+
+    result = predict_gender(data)
+
+    status_code = 200 if result['success'] else 400
+    return jsonify(result), status_code
 
 
 # Error Handlers
