@@ -3,7 +3,9 @@
 # streamlit_app/streamlit_app.py
 # ============================================================
 
+# =============================================================
 # Section 1 - Page Config + Imports
+# =============================================================
 
 import streamlit as st
 import pandas as pd
@@ -29,7 +31,9 @@ MODELS_DIR = os.path.join(ROOT_DIR, 'models')
 DATA_DIR = os.path.join(ROOT_DIR, 'data')
 
 
+# ================================================================
 # Section 2 - Load Data & Models
+# ================================================================
 
 # Load Data
 @st.cache_data
@@ -49,13 +53,13 @@ def load_models():
     hotel_feat = joblib.load(os.path.join(MODELS_DIR, 'hotel_features.pkl'))
     flight_model = joblib.load(os.path.join(MODELS_DIR, 'flight_price_model.pkl'))
     flight_columns = joblib.load(os.path.join(MODELS_DIR, 'feature_columns.pkl'))
-    return (hotel_sim, collab_mat, user_hotel,
-            user_prof, hotel_feat,
+    return (hotel_sim, collab_mat, user_hotel, user_prof, hotel_feat,
             flight_model, flight_columns)
 
 
-
+# =========================================================================
 # Section 3 - Recommendation Functions
+# =========================================================================
 
 # Content-Based Recommend
 def content_based_recommend(user_code, hotels_df, hotel_sim_df, n=5):
@@ -155,8 +159,9 @@ def predict_flight_price(distance, flight_type, agency,
     return round(float(model.predict(input_df)[0]), 2)
 
 
-
+# ================================================================
 # Section 4 - Main Function + Sidebar
+# ================================================================
 
 # MAIN APP
 def main():
@@ -186,9 +191,12 @@ def main():
     st.sidebar.divider()
     st.sidebar.markdown("*Built by Akshay Som*")
 
-    # Section 5 - Dashboard Page
 
-    # PAGE 1 — DASHBOARD
+    # ===============================================================
+    # Section 5 - Dashboard Page
+    # ===============================================================
+
+    # PAGE 1 - DASHBOARD
     if page == "🏠 Dashboard":
         st.title("✈️ Voyage Analytics Dashboard")
         st.markdown("### Integrating MLOps in Travel - Productionization of ML Systems")
@@ -261,9 +269,11 @@ def main():
             plt.close()
 
     
+    # ====================================================================
     # Section 6 - Hotel Recommendations Page
+    # ====================================================================
 
-    # PAGE 2 — HOTEL RECOMMENDATIONS
+    # PAGE 2 - HOTEL RECOMMENDATIONS
 
     elif page == "🏨 Hotel Recommendations":
         st.title("🏨 Hotel Recommendation Engine")
@@ -333,9 +343,11 @@ def main():
                 plt.close()
 
     
+    # ==================================================================
     # Section 7 - Flight Price Predictor Page
+    # ==================================================================
 
-    # PAGE 3 — FLIGHT PRICE PREDICTOR
+    # PAGE 3 - FLIGHT PRICE PREDICTOR
 
     elif page == "💰 Flight Price Predictor":
         st.title("💰 Flight Price Predictor")
@@ -389,7 +401,9 @@ def main():
                 })
 
 
+    # =================================================================
     # Section 8 - Data Insights Page + Run App
+    # =================================================================
 
     # PAGE 4 - DATA INSIGHTS
 
