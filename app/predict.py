@@ -19,6 +19,7 @@ COLUMNS_PATH = os.path.join(MODELS_DIR, 'feature_columns.pkl')
 # Load Artifacts
 print("Loading model artifacts...")
 model = joblib.load(MODEL_PATH)
+# scaler loaded but not applied - Random Forest doesn't require scaling
 scaler = joblib.load(SCALER_PATH)
 feature_columns = joblib.load(COLUMNS_PATH)
 print(f"-> Model loaded successfully")

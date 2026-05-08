@@ -97,6 +97,21 @@ def test_batch_predict():
     print_result("Batch Predict - 3 Flights", r, passed)
 
 
+def test_batch_with_invalid():
+    payload = {
+        "flights": [
+            {"distance": 676.53, "flightType": "firstClass",
+             "agency": "FlyingDrops", "month": 10, "day_of_week": 2},
+            {"distance": 300.00, "flightType": "business",  # INVALID
+             "agency": "Rainbow", "month": 8, "day_of_week": 1}
+        ]
+    }
+    r = requests.post(f"{BASE_URL}/predict/batch", json=payload)
+    passed = (r.status_code == 200 and
+              r.json()['total_predicted'] == 1)  # only 1 should succeed
+    print_result("Batch with one invalid flight", r, passed)
+
+
 def test_invalid_flight_type():
     payload = {
         "distance" : 500.00,
