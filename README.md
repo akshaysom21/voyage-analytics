@@ -586,14 +586,6 @@ Production-grade security measures:
 
 ---
 
-## 📖 Documentation
-
-- [PRESENTATION_SCRIPT.md](PRESENTATION_SCRIPT.md) - Full presentation script
-- [PRESENTATION_CHEAT_SHEET.md](PRESENTATION_CHEAT_SHEET.md) - Quick reference
-- [PRESENTATION_SLIDES_GUIDE.md](PRESENTATION_SLIDES_GUIDE.md) - Slide design guide
-
----
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please:
@@ -616,7 +608,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 **Akshay Som**
 - GitHub: [@akshaysom21](https://github.com/akshaysom21)
-- Email: akshay.som@email.com
+- Email: akshaysom21@gmail.com
 
 ---
 
