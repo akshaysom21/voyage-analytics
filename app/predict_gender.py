@@ -30,6 +30,7 @@ print(f"-> Classes: {clf_label_enc.classes_.tolist()}")
 VALID_COMPANIES = ['4You', 'Acme Factory', 'Monsters CYA',
                    'Umbrella LTDA', 'Wonka Company']
 
+
 # Validation
 def validate_gender_input(data):
     required = [

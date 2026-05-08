@@ -50,9 +50,9 @@ def model_info():
         'model_type' : 'Random Forest Regressor',
         'version' : '1.0.0',
         'performance' : {
-            'r2_score' : 0.9069,
-            'mae' : 61.78,
-            'rmse' : 110.75
+            'r2_score' : 0.9067,
+            'mae' : 61.8,
+            'rmse' : 110.9
         },
         'features' : [
             'distance - Route distance in km',

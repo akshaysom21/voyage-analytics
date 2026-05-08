@@ -24,7 +24,7 @@ Voyage Analytics is a **production-ready MLOps system** that demonstrates how tr
 **The Challenge:** Travel industry has unprecedented amounts of data but lacks the infrastructure to extract real-time insights.
 
 **The Solution:** We built an end-to-end system with:
-- ✅ 3 highly accurate ML models (90%+ accuracy)
+- ✅ 3 ML models (regression with 90%+ R², classification with baseline performance)
 - ✅ Production REST API (<100ms latency)
 - ✅ Containerized with Docker for consistency
 - ✅ Orchestrated with Kubernetes for scalability
@@ -60,8 +60,8 @@ Real-world data from a Brazilian travel platform:
 ## 🎯 Features
 
 ### 🤖 Machine Learning Models
-- **Flight Price Prediction** - Random Forest regression with 90.69% accuracy
-- **Gender Classification** - Identify customer demographics (82-85% accuracy)
+- **Flight Price Prediction** - Random Forest regression with 90.67% R² score
+- **Gender Classification** - Identify customer demographics (36.19% accuracy)
 - **Hotel Recommendations** - Content-based collaborative filtering
 
 ### 🔌 REST API
@@ -92,9 +92,9 @@ Real-world data from a Brazilian travel platform:
 Algorithm:      Random Forest Regressor (100 trees)
 Input Features: Distance, flight type, airline, month, day of week
 Performance:
-  • R² Score:   0.9069 (90.69% variance explained)
-  • MAE:        $61.78 (average prediction error)
-  • RMSE:       $110.75
+  • R² Score:   0.9067 (90.67% variance explained)
+  • MAE:        $61.8 (average prediction error)
+  • RMSE:       $110.9
 Training Data:  217,510 flights
 Testing Data:   54,378 flights
 ```
@@ -104,8 +104,9 @@ Testing Data:   54,378 flights
 Algorithm:      Random Forest Classifier
 Input:          Travel behavior patterns & preferences
 Performance:
-  • Accuracy:   82-85%
-  • F1-Score:   0.83
+  • Accuracy:   36.19%
+  • F1 Macro:   0.3623
+  • F1 Weighted: 0.362
 Use Case:       Customer segmentation, targeted marketing
 ```
 
@@ -114,7 +115,9 @@ Use Case:       Customer segmentation, targeted marketing
 Algorithm:      Collaborative Filtering + Content-based
 Approach:       User-item similarity matrix
 Performance:
-  • Precision@10: 88%
+  • Hotels Coverage: 100%
+  • Eligible Users: 71.3%
+  • Avg Recommended Price: $198.06
 Use Case:       Personalization, cross-selling, upselling
 ```
 
@@ -386,12 +389,14 @@ voyage-analytics/
 ### Model Accuracy
 | Model | Metric | Score |
 |-------|--------|-------|
-| **Flight Price** | R² Score | 0.9069 ⭐⭐⭐⭐⭐ |
-| | MAE | $61.78 |
-| | RMSE | $110.75 |
-| **Gender** | Accuracy | 82-85% ⭐⭐⭐⭐ |
-| | F1-Score | 0.83 |
-| **Hotel Recommender** | Precision@10 | 88% ⭐⭐⭐⭐ |
+| **Flight Price** | R² Score | 0.9067 ⭐⭐⭐⭐⭐ |
+| | MAE | $61.8 |
+| | RMSE | $110.9 |
+| **Gender** | Accuracy | 36.19% ⭐ |
+| | F1 Macro | 0.3623 |
+| | F1 Weighted | 0.362 |
+| **Hotel Recommender** | Coverage | 100% ⭐⭐⭐⭐⭐ |
+| | Eligible Users | 71.3% |
 
 ### System Performance
 | Metric | Value |

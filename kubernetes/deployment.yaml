@@ -17,11 +17,12 @@ spec:
       containers:
       - name: flight-api
         image: voyage-analytics:1.0.0
+        imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000
-        env:
-        - name: FLASK_ENV
-          value: "production"
+        envFrom:
+        - configMapRef:
+            name: voyage-analytics-config
         resources:
           requests:
             memory: "256Mi"
@@ -33,11 +34,18 @@ spec:
           httpGet:
             path: /health
             port: 5000
-          initialDelaySeconds: 15
+          initialDelaySeconds: 20
           periodSeconds: 30
+          timeoutSeconds: 5
         readinessProbe:
           httpGet:
             path: /health
             port: 5000
-          initialDelaySeconds: 10
+          initialDelaySeconds: 15
           periodSeconds: 10
+          timeoutSeconds: 5
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 1000
+          readOnlyRootFilesystem: false
+          allowPrivilegeEscalation: false

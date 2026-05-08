@@ -138,8 +138,8 @@ def predict_price(data):
         },
         'model_info': {
             'model_type': 'Random Forest Regressor',
-            'r2_score': 0.9069,
-            'mae': 61.78,
-            'rmse': 110.75
+            'r2_score': 0.9067,
+            'mae': 61.8,
+            'rmse': 110.9
         }
     }
