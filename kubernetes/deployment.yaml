@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: flight-api
-        image: voyage-analytics:1.0.0
+        image: akshaysom21/voyage-analytics:1.0.0
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 5000

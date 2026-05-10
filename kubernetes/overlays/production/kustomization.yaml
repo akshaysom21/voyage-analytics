@@ -1,0 +1,82 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Extend base configuration
+bases:
+  - ../../
+
+# Override namespace for production
+namespace: voyage-analytics-prod
+
+# Production labels
+commonLabels:
+  environment: production
+
+# Image for production (from private registry with specific version)
+images:
+  - name: voyage-analytics
+    newName: your-registry.com/voyage-analytics
+    newTag: 1.0.0
+
+# High availability - multiple replicas
+replicas:
+  - name: voyage-analytics
+    count: 3
+
+# Production resource requirements (higher)
+patchesStrategicMerge:
+  - |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: voyage-analytics
+    spec:
+      strategy:
+        type: RollingUpdate
+        rollingUpdate:
+          maxSurge: 1
+          maxUnavailable: 0
+      template:
+        spec:
+          affinity:
+            podAntiAffinity:
+              preferredDuringSchedulingIgnoredDuringExecution:
+              - weight: 100
+                podAffinityTerm:
+                  labelSelector:
+                    matchExpressions:
+                    - key: app
+                      operator: In
+                      values:
+                      - voyage-analytics
+                  topologyKey: kubernetes.io/hostname
+          containers:
+          - name: flight-api
+            imagePullPolicy: Always
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "500m"
+              limits:
+                memory: "1Gi"
+                cpu: "1000m"
+            livenessProbe:
+              initialDelaySeconds: 30
+              periodSeconds: 30
+              timeoutSeconds: 5
+              failureThreshold: 3
+            readinessProbe:
+              initialDelaySeconds: 20
+              periodSeconds: 10
+              timeoutSeconds: 5
+              failureThreshold: 2
+
+# Production ConfigMap patches
+configMapGenerator:
+  - name: voyage-analytics-config
+    behavior: merge
+    literals:
+      - FLASK_ENV=production
+      - LOG_LEVEL=WARNING
+      - ENABLE_METRICS=true
+      - ENABLE_TRACING=true

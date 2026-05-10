@@ -1,0 +1,52 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Base configuration
+namespace: voyage-analytics
+
+# Common labels applied to all resources
+commonLabels:
+  app: voyage-analytics
+  version: 1.0.0
+
+# Common annotations
+commonAnnotations:
+  managed-by: kustomize
+  description: "Voyage Analytics Flight Price Prediction API"
+
+# Resources
+resources:
+  - deployment.yaml
+  - service.yaml
+  - configmap.yaml
+
+# Image specification
+images:
+  - name: voyage-analytics
+    newName: voyage-analytics
+    newTag: 1.0.0
+
+# Replicas for base
+replicas:
+  - name: voyage-analytics
+    count: 2
+
+# Patches for base configuration
+patchesStrategicMerge:
+  - |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: voyage-analytics
+    spec:
+      template:
+        spec:
+          containers:
+          - name: flight-api
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "500m"
+              limits:
+                memory: "1Gi"
+                cpu: "1000m"

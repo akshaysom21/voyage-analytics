@@ -1,0 +1,59 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Extend base configuration
+bases:
+  - ../../
+
+# Override namespace for development
+namespace: voyage-analytics-dev
+
+# Development labels
+commonLabels:
+  environment: development
+
+# Image for development (local/development registry)
+images:
+  - name: voyage-analytics
+    newName: voyage-analytics
+    newTag: latest
+
+# Single replica for development
+replicas:
+  - name: voyage-analytics
+    count: 1
+
+# Development resource requirements (lower)
+patchesStrategicMerge:
+  - |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: voyage-analytics
+    spec:
+      template:
+        spec:
+          containers:
+          - name: flight-api
+            imagePullPolicy: IfNotPresent
+            resources:
+              requests:
+                memory: "256Mi"
+                cpu: "250m"
+              limits:
+                memory: "512Mi"
+                cpu: "500m"
+            livenessProbe:
+              initialDelaySeconds: 10
+              periodSeconds: 20
+            readinessProbe:
+              initialDelaySeconds: 5
+              periodSeconds: 10
+
+# Development ConfigMap patches
+configMapGenerator:
+  - name: voyage-analytics-config
+    behavior: merge
+    literals:
+      - FLASK_ENV=development
+      - LOG_LEVEL=DEBUG

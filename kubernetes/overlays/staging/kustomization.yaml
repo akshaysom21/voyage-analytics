@@ -1,0 +1,60 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# Extend base configuration
+bases:
+  - ../../
+
+# Override namespace for staging
+namespace: voyage-analytics-staging
+
+# Staging labels
+commonLabels:
+  environment: staging
+
+# Image for staging
+images:
+  - name: voyage-analytics
+    newName: your-registry.com/voyage-analytics
+    newTag: 1.0.0-rc
+
+# Multiple replicas for staging
+replicas:
+  - name: voyage-analytics
+    count: 2
+
+# Staging resource requirements (medium)
+patchesStrategicMerge:
+  - |-
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: voyage-analytics
+    spec:
+      template:
+        spec:
+          containers:
+          - name: flight-api
+            imagePullPolicy: Always
+            resources:
+              requests:
+                memory: "512Mi"
+                cpu: "500m"
+              limits:
+                memory: "1Gi"
+                cpu: "1000m"
+            livenessProbe:
+              initialDelaySeconds: 20
+              periodSeconds: 30
+            readinessProbe:
+              initialDelaySeconds: 15
+              periodSeconds: 10
+
+# Staging ConfigMap patches
+configMapGenerator:
+  - name: voyage-analytics-config
+    behavior: merge
+    literals:
+      - FLASK_ENV=staging
+      - LOG_LEVEL=INFO
+      - ENABLE_METRICS=true
