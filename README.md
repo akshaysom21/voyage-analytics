@@ -736,7 +736,7 @@ joblib==1.3.2
 
 The Streamlit application is deployed publicly on Streamlit Cloud.
 
-**Live App:** [voyage-analytics.streamlit.app](https://voyage-analytics.streamlit.app)
+**Live App:** [voyage-analytics.streamlit.app](https://aks21-voyage-analytics.streamlit.app/)
 
 ---
 
