@@ -189,7 +189,7 @@ def main():
     st.sidebar.metric("Classification", "40.30%")
     st.sidebar.metric("Rec Coverage", "100%")
     st.sidebar.divider()
-    st.sidebar.markdown("*Built by Akshay Som*")
+    st.sidebar.markdown("*Built by Akshay | Shyam | Pooja | Bharath*")
 
 
     # ===============================================================
